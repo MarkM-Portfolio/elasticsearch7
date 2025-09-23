@@ -1,0 +1,6 @@
+reindex.remote.whitelist: "${ELASTICSEARCH5_HOST}:${ELASTICSEARCH5_PORT}"
+reindex.ssl.certificate_authorities: es5certs/elasticsearch-http.crt.pem
+reindex.ssl.verification_mode: none
+reindex.ssl.certificate: es5certs/elasticsearch-healthcheck.crt.pem
+reindex.ssl.key: es5certs/elasticsearch-healthcheck.des3.key
+reindex.ssl.key_passphrase: ${KEY_PASS}

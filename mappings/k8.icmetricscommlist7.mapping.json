@@ -1,0 +1,17 @@
+{
+  
+    "properties": {
+      "communityId": {
+        "type": "keyword"
+      },
+      "communityUuid": {
+        "type": "keyword"
+      },
+      "creationTs": {
+        "type": "date"
+      },
+      "status": {
+        "type": "byte"
+      }
+    }
+  }

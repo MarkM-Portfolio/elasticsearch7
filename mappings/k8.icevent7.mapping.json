@@ -1,0 +1,114 @@
+{
+
+"properties" : {
+"userUuid" : {
+"type" : "keyword",
+"index" : true
+},
+"itemUuid" : {
+"type" : "keyword",
+"index" : true
+},
+"sourceId" : {
+"type" : "integer",
+"index" : true
+},
+"itemTypeId" : {
+"type" : "integer",
+"index" : true
+},
+"communityUuid" : {
+"type" : "keyword",
+"index" : true
+},
+"creatorUuid" : {
+"type" : "keyword",
+"index" : true
+},
+"targetUserUuid" : {
+"type" : "keyword",
+"index" : true
+},
+"containerUuid" : {
+"type" : "keyword",
+"index" : true
+},
+"parentItemUuid" : {
+"type" : "keyword",
+"index" : true
+},
+"targetItemUuid" : {
+"type" : "keyword",
+"index" : true
+},
+"targetItemCreatorUuid" : {
+"type" : "keyword",
+"index" : true
+},
+"eventOpId" : {
+"type" : "integer",
+"index" : true
+},
+"eventTs" : {
+"type" : "date",
+"format" : "strict_date_optional_time||strict_date_time||epoch_millis",
+"index" : true
+},
+"orgId" : {
+"type" : "keyword",
+"index" : true
+},
+"clientCategory" : {
+"type" : "keyword",
+"index" : true
+},
+"clientType" : {
+"type" : "keyword",
+"index" : true
+},
+"sessionId" : {
+"type" : "keyword",
+"index" : true
+},
+"cnt" : {
+"type" : "integer",
+"index" : true
+},
+"migrationId" : {
+"type" : "long",
+"index" : true
+},
+    "userAttribute1" : {
+       "type" : "keyword",
+       "index" : true
+    },
+    "userAttribute2" : {
+       "type" : "keyword",
+       "index" : true
+    },
+    "userAttribute3" : {
+       "type" : "keyword",
+       "index" : true
+    },
+    "targetUserAttribute1" : {
+       "type" : "keyword",
+       "index" : true
+    },
+    "targetUserAttribute2" : {
+       "type" : "keyword",
+       "index" : true
+    },
+    "targetUserAttribute3" : {
+       "type" : "keyword",
+       "index" : true
+    },
+    "userAttributesFilled" : {
+      "type" : "boolean"
+    },
+    "targetUserAttributesFilled" : {
+      "type" : "boolean"
+    }
+  }
+}
+
+

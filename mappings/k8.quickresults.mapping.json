@@ -1,0 +1,25 @@
+{
+  
+  "properties": { 
+                "title":                { "type": "text", "index_options": "offsets" },
+                "user_id":              { "type": "keyword" },
+                "org_id":               { "type": "keyword" },
+                "content_org_id":       { "type": "keyword" },
+                "community_id":         { "type": "keyword", "doc_values": true },
+                "date":                 { "type": "date", "format": "strict_date_optional_time||epoch_millis" },
+                "type":                 { "type": "keyword" },
+                "source":               { "type": "keyword" },
+                "item_type":            { "type": "keyword" },
+                "url":                  { "type": "keyword" },
+                "content_id":           { "type": "keyword" },
+                "container_id":         { "type": "keyword" },
+                "content_creator_id":   { "type": "keyword" },
+                "last_updated_in_solr": { "type": "date", "format": "strict_date_optional_time||epoch_millis" },
+                "deletion_type":        { "type": "keyword" },
+                "deletion_criteria":    { "type": "keyword" },
+                "content_owner_id":     { "type": "keyword" },
+                "visibility":           { "type": "keyword" },
+                "is_external":          { "type": "boolean" },
+                "is_community_file":    { "type": "boolean" }
+             }
+}

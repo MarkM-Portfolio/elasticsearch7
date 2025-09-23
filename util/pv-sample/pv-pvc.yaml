@@ -1,0 +1,289 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: connections
+  name: es-pv-backup-7
+  # annotations:
+  #   pv.beta.kubernetes.io/gid: "1001"
+  labels:
+    component: elasticsearch7
+    role: es-pv-backup-7
+spec:
+  capacity:
+    storage: 250Mi
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: anything
+  claimRef:
+    namespace: connections
+    name: es-pvc-backup-7
+  nfs:
+    path: /data/pink/esbackup-7
+    server: localhost  #for now cofigured harcoded to test it.
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: connections
+  name: es-pvc-backup-7
+  # annotations:
+  #   pv.beta.kubernetes.io/gid: "0"
+  #   volume.beta.kubernetes.io/storage-class: "standard"
+  labels:
+    component: elasticsearch7
+spec:
+  accessModes:
+    - ReadWriteMany
+  # storageClassName: "standard"
+  storageClassName: anything
+  resources:
+    requests:
+      storage: 250Mi
+  selector:
+    matchLabels:
+      component: elasticsearch7
+      role: es-pv-backup-7
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: connections
+  name: es-data-7-0
+  # annotations:
+  #   pv.beta.kubernetes.io/gid: "1001"
+  labels:
+    component: elasticsearch7
+    role: es-data-7-0
+spec:
+  capacity:
+    storage: 250Mi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: anything
+  nfs:
+    path: /data/pink/esdata-7-0
+    server: localhost #for now cofigured harcoded to test it.
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: connections
+  name: es-pvc-es-data-7-0
+  # annotations:
+  #   pv.beta.kubernetes.io/gid: "0"
+  #   volume.beta.kubernetes.io/storage-class: "standard"
+  labels:
+    component: elasticsearch7
+spec:
+  accessModes:
+  - ReadWriteOnce
+  # storageClassName: "standard"
+  storageClassName: anything
+  resources:
+    requests:
+      storage: 250Mi
+  selector:
+    matchLabels:
+      component: elasticsearch7
+      role: es-data-7-0
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: connections
+  name: es-data-7-1
+  labels:
+    component: elasticsearch7
+    role: es-data-7-1
+spec:
+  capacity:
+    storage: 250Mi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: anything
+  nfs:
+    path: /data/pink/esdata-7-1
+    server: localhost #for now cofigured harcoded to test it.
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: connections
+  name: es-pvc-es-data-7-1
+  labels:
+    component: elasticsearch7
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: anything
+  resources:
+    requests:
+      storage: 250Mi
+  selector:
+    matchLabels:
+      component: elasticsearch7
+      role: es-data-7-1
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: connections
+  name: es-data-7-2
+  labels:
+    component: elasticsearch7
+    role: es-data-7-2
+spec:
+  capacity:
+    storage: 250Mi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: anything
+  nfs:
+    path: /data/pink/esdata-7-2
+    server: localhost #for now cofigured harcoded to test it.
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: connections
+  name: es-pvc-es-data-7-2
+  labels:
+    component: elasticsearch7
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: anything
+  resources:
+    requests:
+      storage: 250Mi
+  selector:
+    matchLabels:
+      component: elasticsearch7
+      role: es-data-7-2
+---
+#---- For master nodes---------
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: connections
+  name: es-master-7-0
+  # annotations:
+  #   pv.beta.kubernetes.io/gid: "1001"
+  labels:
+    component: elasticsearch7
+    role: es-master-7-0
+spec:
+  capacity:
+    storage: 250Mi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: anything
+  nfs:
+    path: /data/pink/esmaster-7-0
+    server: localhost #for now cofigured harcoded to test it.
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: connections
+  name: es-pvc-es-master-7-0
+  # annotations:
+  #   pv.beta.kubernetes.io/gid: "0"
+  #   volume.beta.kubernetes.io/storage-class: "standard"
+  labels:
+    component: elasticsearch7
+spec:
+  accessModes:
+  - ReadWriteOnce
+  # storageClassName: "standard"
+  storageClassName: anything
+  resources:
+    requests:
+      storage: 250Mi
+  selector:
+    matchLabels:
+      component: elasticsearch7
+      role: es-master-7-0
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: connections
+  name: es-master-7-1
+  labels:
+    component: elasticsearch7
+    role: es-master-7-1
+spec:
+  capacity:
+    storage: 250Mi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: anything
+  nfs:
+    path: /data/pink/esmaster-7-1
+    server: localhost #for now cofigured harcoded to test it.
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: connections
+  name: es-pvc-es-master-7-1
+  labels:
+    component: elasticsearch7
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: anything
+  resources:
+    requests:
+      storage: 250Mi
+  selector:
+    matchLabels:
+      component: elasticsearch7
+      role: es-master-7-1
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: connections
+  name: es-master-7-2
+  labels:
+    component: elasticsearch7
+    role: es-master-7-2
+spec:
+  capacity:
+    storage: 250Mi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: anything
+  nfs:
+    path: /data/pink/esmaster-7-2
+    server: localhost #for now cofigured harcoded to test it.
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: connections
+  name: es-pvc-es-master-7-2
+  labels:
+    component: elasticsearch7
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: anything
+  resources:
+    requests:
+      storage: 250Mi
+  selector:
+    matchLabels:
+      component: elasticsearch7
+      role: es-master-7-2
+---

@@ -1,0 +1,67 @@
+#search guard config
+searchguard:
+  ssl:
+    transport:
+      enable_openssl_if_available: true
+      enforce_hostname_verification: false
+      pemkey_filepath: certs/elasticsearch-transport.key
+      pemkey_password: ${KEY_PASS}
+      pemcert_filepath: certs/elasticsearch-transport.crt.pem
+      pemtrustedcas_filepath: certs/chain-ca.pem
+    http:
+      enable_openssl_if_available: true
+      enabled: true
+      pemkey_filepath: certs/elasticsearch-http.key
+      pemkey_password: ${KEY_PASS}
+      pemcert_filepath: certs/elasticsearch-http.crt.pem
+      pemtrustedcas_filepath: certs/chain-ca.pem
+      clientauth_mode: REQUIRE
+  authcz:
+    admin_dn:
+      - "CN=elasticsearch-admin, OU=CES, O=HCL, C=US"
+      - "CN=elasticsearch-metrics, OU=CES, O=HCL, C=US"
+      - "CN=elasticsearch-peoplesearch, OU=CES, O=HCL, C=US"
+      - "CN=elasticsearch-healthcheck, OU=CES, O=HCL, C=US"
+      - "CN=elasticsearch-contentsearch, OU=CES, O=HCL, C=US"
+      - "CN=elasticsearch-orientme, OU=CES, O=HCL, C=US"
+
+cluster:
+  name: ${CLUSTER_NAME}
+  publish:
+    timeout: 60s
+  initial_master_nodes: [${INITIAL_MASTER_NODE}]
+
+node:
+  master: ${NODE_MASTER}
+  data: ${NODE_DATA}
+  name: ${NODE_NAME}
+  ingest: ${NODE_INGEST}
+  max_local_storage_nodes: ${MAX_LOCAL_STORAGE_NODES}
+
+network.host: ${NETWORK_HOST}
+
+path:
+  data: /data/data
+  logs: /data/log
+  repo: ["/backup"]
+
+bootstrap:
+  memory_lock: ${MEMORY_LOCK}
+
+http:
+  compression: true
+  cors:
+    enabled: ${HTTP_CORS_ENABLE}
+    allow-origin: ${HTTP_CORS_ALLOW_ORIGIN}
+
+discovery:
+  seed_hosts: ${ES_DISCOVERY_SERVICE}:9300
+  seed_resolver:
+    timeout: 30s
+  cluster_formation_warning_timeout: 30s
+
+xpack:
+  ml:
+    enabled: false
+  security:
+    enabled: false

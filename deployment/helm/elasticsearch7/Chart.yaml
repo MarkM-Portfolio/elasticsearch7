@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Connections Elastic search 7.10.1
+name: elasticsearch7
+version: 0.1.0

@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: connections
+  name: job-backup-7
+spec:
+    template:
+      spec:
+        containers:
+        - name: job-backup-7
+          image: connections-docker.artifactory.cwp.pnp-hcl.com/elasticsearch7:latest
+          imagePullPolicy: IfNotPresent
+          command: ['sh', '-c',
+                    "status_text=$(/opt/elasticsearch-7.10.1/probe/doBackup.sh reponame); \
+                    echo $status_text; \
+                    exit $?;" ]
+          env:
+          - name: KEY_PASS
+            valueFrom:
+              secretKeyRef:
+                name: elasticsearch-7-secret
+                key: elasticsearch-key-password.txt
+          volumeMounts:
+          - name: es-secrets-vol
+            mountPath: /opt/elasticsearch-7.10.1/config/certs
+            readOnly: true
+        restartPolicy: OnFailure
+        volumes:
+          - name: es-secrets-vol
+            secret:
+              secretName: elasticsearch-7-secret

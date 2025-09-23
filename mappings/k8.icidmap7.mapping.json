@@ -1,0 +1,21 @@
+{
+
+"properties" : {
+"uuid" : {
+"type" : "keyword",
+"index" : false
+},
+"type" : {
+"type" : "integer",
+"index" : false
+},
+"orgId" : {
+"type" : "keyword",
+"index" : true
+},
+"idLong" : {
+"type" : "long",
+"index" : false
+}
+}
+}

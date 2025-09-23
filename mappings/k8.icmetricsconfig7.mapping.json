@@ -1,0 +1,25 @@
+{
+
+"properties" : {
+"orgId" : {
+"type" : "keyword",
+"index" : true
+},
+"cubeStartDate" : {
+"type" : "date",
+"format": "yyyy-MM-dd||epoch_millis",
+"index" : true
+},
+"cubeEndDate" : {
+"type" : "date",
+"format": "yyyy-MM-dd||epoch_millis",
+"index" : true
+},
+"eventStartDate" : {
+"type" : "date",
+"format": "yyyy-MM-dd||epoch_millis",
+"index" : true
+}
+}
+}
+

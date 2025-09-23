@@ -1,0 +1,37 @@
+###################################################################
+# HCL Confidential
+#
+# OCO Source Materials
+#
+# Copyright HCL Technologies Limited 2020 
+#
+# The source code for this program is not published or otherwise
+# divested of its trade secrets, irrespective of what has been
+# deposited with the U.S. Copyright Office.
+###################################################################
+{{- $refProject := .Values.project -}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: elasticsearch{{ .Values.elasticsearch.majorVersion }}
+  labels:
+    component: elasticsearch{{ .Values.elasticsearch.majorVersion }}
+    role: client
+spec:
+  {{- if (and (eq .Values.deploymentType "cloud") (not (empty .Values.deploymentType))) }}
+  type: NodePort
+  {{- else }}
+  type: NodePort
+  {{- end }}
+  ports:
+  - name: http
+    {{- if (and (not (eq .Values.deploymentType "cloud")) (not (empty .Values.service.type)) (eq .Values.service.type "NodePort") ) }}
+    nodePort: {{ .Values.service.nodePort }}
+    {{- end }}
+    port: {{ $refProject.containerPortHttp }}
+    protocol: TCP
+  selector:
+    component: elasticsearch{{ .Values.elasticsearch.majorVersion }}
+    role: client

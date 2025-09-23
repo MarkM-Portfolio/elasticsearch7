@@ -1,0 +1,33 @@
+###################################################################
+# HCL Confidential
+#
+# OCO Source Materials
+#
+# Copyright HCL Technologies Limited 2020 
+#
+# The source code for this program is not published or otherwise
+# divested of its trade secrets, irrespective of what has been
+# deposited with the U.S. Copyright Office.
+###################################################################
+{{- $refProject := .Values.project -}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: es-svc-master-{{ .Values.elasticsearch.majorVersion }}
+  labels:
+    component: elasticsearch{{ .Values.elasticsearch.majorVersion }}
+    role: master
+spec:
+  type: ClusterIP
+  selector:
+    component: elasticsearch{{ .Values.elasticsearch.majorVersion }}
+    role: master
+  ports:
+  - name: transport
+    port: {{ $refProject.containerPortTCP }}
+    protocol: TCP
+  - name: http
+    port: {{ $refProject.containerPortHttp }}
+    protocol: TCP

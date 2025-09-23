@@ -1,0 +1,80 @@
+{
+  
+    "properties": {
+      "communityUuid": {
+        "type": "keyword",
+        "index": true
+      },
+      "orgId": {
+        "type": "keyword",
+        "index": true
+      },
+      "sourceId": {
+        "type": "integer",
+        "index": true
+      },
+      "metrics": {
+        "type": "keyword",
+        "index": true
+      },
+      "dateType": {
+        "type": "keyword",
+        "index": true
+      },
+      "date": {
+        "type": "date",
+        "format": "yyyy-MM-dd||epoch_millis",
+        "index": true
+      },
+      "value": {
+        "type": "integer"
+      },
+      "byApp": {
+        "type": "nested",
+        "properties": {
+          "source": {
+            "type": "integer"
+          },
+          "value": {
+            "type": "integer"
+          }
+        }
+      },
+      "byAttr1": {
+        "type": "nested",
+        "properties": {
+          "key": {
+            "type": "keyword",
+            "index": true
+          },
+          "value": {
+            "type": "integer"
+          }
+        }
+      },
+      "byAttr2": {
+        "type": "nested",
+        "properties": {
+          "key": {
+            "type": "keyword",
+            "index": true
+          },
+          "value": {
+            "type": "integer"
+          }
+        }
+      },
+      "byAttr3": {
+        "type": "nested",
+        "properties": {
+          "key": {
+            "type": "keyword",
+            "index": true
+          },
+          "value": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
